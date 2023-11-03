@@ -18,9 +18,16 @@ def zip_folder(folder_path, output_path):
 
     return
 
+def str_to_bool(str):
+    if str.lower()=="false":
+        return False
+    else:
+        return True
+
 unanonymize = {}
 
 config['numberDiffs'] = int(config['numberDiffs'])
+config['taiko'] = str_to_bool(config['taiko'])
 
 HOME = os.getcwd()
 maps = os.path.join(HOME, 'maps.zip')
@@ -101,9 +108,9 @@ for folder in oszf:
                 repl = 'GridSize: 64'
             elif line.startswith('Tags:'):
                 repl = 'Tags:'
-            elif line.startswith('CircleSize'):
+            elif line.startswith('CircleSize') and config['taiko'] ==True:
                 repl = 'CircleSize:5'
-            elif line.startswith('ApproachRate'):
+            elif line.startswith('ApproachRate') and config['taiko'] ==True:
                 repl = 'ApproachRate:5'
             elif line.startswith('Version:'):
                 repl = 'Version: ' + newName
@@ -130,9 +137,9 @@ for folder in oszf:
                 repl = 'BeatmapSetID:-1'
             elif line.startswith('Bookmarks'):
                 repl = 'Bookmarks:'
-            elif len(line.split(',')) == 6:
+            elif len(line.split(',')) == 6 and config['taiko'] ==True:
                 repl = '256,192,'+','.join(line.split(',')[2:])
-            elif len(line.split(',')) == 7:
+            elif len(line.split(',')) == 7 and config['taiko'] ==True:
                 repl = '256,192,' + ','.join(line.split(',')[2:])
             if repl:
                 tow.append(repl+'\n')
@@ -183,6 +190,6 @@ os.rename('./masking.csv', os.path.join(outdir, 'masking.csv'))
 
 
 if success:
-    print('Yay your entries are now anonymized, apart from the ones listed above that failed')
+    print('Your contest entries are now anonymized, apart from the ones listed above that failed')
 else:
     print('Oops I did a fucky wucky')

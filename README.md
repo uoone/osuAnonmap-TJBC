@@ -16,6 +16,16 @@ Create token.json with the following format:
 
 Your API key can be found under the settings on your profile page.
 
+For Taiko contests, go into config.json and change 
+
+```
+"taiko":"False" 
+```
+to 
+```
+"taiko":"True"
+```
+
 To run:
 Navigate to the folder you stored this code and run main.py with
 ```

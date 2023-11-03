@@ -1,4 +1,5 @@
 {
   "tournamentName": "Contest Name",
-  "numberDiffs": "1"
+  "numberDiffs": "1",
+  "taiko":"False"
 }
