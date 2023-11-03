@@ -1,5 +1,5 @@
 # osuAnonmap
-Anonymize osu maps for contest things
+Essentially the same tool as https://github.com/pishifat/contest-anonymization#readme but in Python
 
 Requirements:
 tqdm (just for visualized progress bars)
