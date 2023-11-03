@@ -71,7 +71,7 @@ for folder in tqdm(oszf):
     imlist = [x for x in os.listdir(os.path.join(oszs, folder)) if x.endswith(('.jpg', '.png'))]
     audiolist = [x for x in os.listdir(os.path.join(oszs, folder)) if x.endswith(('.ogg', '.mp3'))]
     if len(oslist) != config['numberDiffs']:
-        print('Error: %s includes wrong number of .osu files' % folder)
+        print('\nError: %s includes wrong number of .osu files' % folder)
         continue
     ctr = 0
     newName = adjnoun.get()
@@ -158,6 +158,7 @@ success = format.formatMask(HOME)
 shutil.rmtree(tozip)
 shutil.rmtree(oszs)
 
+os.remove('./decode.json')
 os.mkdir(outdir)
 os.rename('./anonmaps.zip', os.path.join(outdir, 'anonmaps.zip'))
 os.rename('./masking.csv', os.path.join(outdir, 'masking.csv'))
