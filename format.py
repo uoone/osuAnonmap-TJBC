@@ -2,7 +2,6 @@ import json
 from osuapi import get_user
 import csv
 import os
-from tqdm import tqdm
 
 def formatMask(path):
     print('Formatting output file')
@@ -23,7 +22,7 @@ def formatMask(path):
     aa = os.path.join(path, './masking.csv')
     with open(aa, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f)
-        for i in tqdm(range(len(declist))):
+        for i in range(len(declist)):
             a = get_user(token['token'], declist[i][1])[0]['user_id']
             tow = [declist[i][1], a, declist[i][0]]
             writer.writerow(tow)

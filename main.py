@@ -3,7 +3,6 @@ import os
 import shutil
 import adjnoun
 import json
-from tqdm import tqdm
 import format
 
 with open('./config.json') as config_json:
@@ -68,7 +67,7 @@ for dir in extr:
 
 oszf = os.listdir(oszs)
 print('Anonymizing .osz files')
-for folder in tqdm(oszf):
+for folder in oszf:
     if len(os.listdir(os.path.join(oszs, folder))) == 0:
         pass
 
