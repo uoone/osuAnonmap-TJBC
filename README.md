@@ -8,7 +8,7 @@ Assumed inputs:
 In the same directory as the code, put maps.zip. This should be a Zip file containing all the .osz files you want to anonymize.
 Create token.json with the following format:
 ```
- {
+{
   "token": "<your legacy osuAPI token>"
 }
 ```
