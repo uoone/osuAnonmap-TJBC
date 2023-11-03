@@ -51,15 +51,27 @@ os.mkdir(tozip)
 with zipfile.ZipFile(maps, "r") as zip_ref:
     zip_ref.extractall(unzip)
 
+
+
 extr = os.listdir(unzip)
-for file in extr:
-    os.mkdir(os.path.join(oszs, file))
-    with zipfile.ZipFile(os.path.join(unzip, file), 'r') as t_zip:
-        t_zip.extractall(os.path.join(oszs, file))
+for dir in extr:
+    for file in os.listdir(os.path.join(unzip, dir)):
+        dirfile = dir + file
+        os.mkdir(os.path.join(oszs, dirfile))
+        try:
+            with zipfile.ZipFile(os.path.join(unzip, dir, file), 'r') as t_zip:
+                t_zip.extractall(os.path.join(oszs, dirfile))
+        except zipfile.BadZipFile:
+            #print('\nentry invalid %s' % os.path.join(unzip,dir,file))
+            pass
+
 
 oszf = os.listdir(oszs)
 print('Anonymizing .osz files')
 for folder in tqdm(oszf):
+    if len(os.listdir(os.path.join(oszs, folder))) == 0:
+        pass
+
     newName = adjnoun.get()
     allfiles = [x for x in os.listdir(os.path.join(oszs, folder))]
     for file in allfiles:
