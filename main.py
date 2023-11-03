@@ -90,6 +90,10 @@ for folder in tqdm(oszf):
                 repl = 'GridSize: 64'
             elif line.startswith('Tags:'):
                 repl = 'Tags:'
+            elif line.startswith('CircleSize'):
+                repl = 'CircleSize:5'
+            elif line.startswith('ApproachRate'):
+                repl = 'ApproachRate:5'
             elif line.startswith('Version:'):
                 repl = 'Version: ' + newName
                 if len(oslist) > 1:
