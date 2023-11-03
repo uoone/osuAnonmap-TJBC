@@ -1,0 +1,6 @@
+*.zip
+/token.json
+/decode.json
+*.csv
+*.xml
+*.iml
