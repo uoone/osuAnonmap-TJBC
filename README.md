@@ -1,6 +1,5 @@
 # osuAnonmap
-Essentially the same tool as https://github.com/pishifat/contest-anonymization#readme but in Python
-No required installed packages (afaik everything comes with regular python 3.10 install)
+Essentially the same tool as https://github.com/pishifat/contest-anonymization#readme but in Python without required installed packages (afaik everything comes with regular python 3.10 install)
 
 
 Setup:
