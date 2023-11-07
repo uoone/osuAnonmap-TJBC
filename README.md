@@ -5,7 +5,14 @@ Essentially the same tool as https://github.com/pishifat/contest-anonymization#r
 Setup:
 
 In the folder containing these python files, put a zip file formatted like the MPG contest download. This means a zip file containing a folder (named after creator) containing an osz file. 
-Go into config.json - change tournament name and number of allowed diffs.
+Go into config.json - change tournament name and number of allowed diffs. 
+
+If 
+```
+numberDiffs = 0
+```
+we operate under the asssumption that any number of difficulties is allowed. Any positive integer assumes exact match.
+
 Create token.json with the following format:
 ```
 {
