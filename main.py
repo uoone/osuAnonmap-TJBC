@@ -89,8 +89,9 @@ for folder in oszf:
     imlist = [x for x in os.listdir(os.path.join(oszs, folder)) if x.endswith(('.jpg', '.png'))]
     audiolist = [x for x in os.listdir(os.path.join(oszs, folder)) if x.endswith(('.ogg', '.mp3'))]
     if len(oslist) != config['numberDiffs']:
-        print('\nError: %s includes wrong number of .osu files' % folder)
-        continue
+        if config['numberDiffs'] != 0:
+            print('\nError: %s includes wrong number of .osu files' % folder)
+            continue
     ctr = 0
     newName = adjnoun.get()
     for file in oslist:
