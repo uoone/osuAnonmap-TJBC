@@ -116,6 +116,10 @@ for folder in osz_folders:
                     else:
                         os.remove(os.path.join(extracted_oszs, folder, audio))
                 repl = f'AudioFilename: {title}.mp3'
+            elif line.startswith('DistanceSpacing: '):
+                repl = 'DistanceSpacing: 1.4'
+            elif line.startswith('BeatDivisor: '):
+                repl = 'BeatDivisor: 4'
             elif line.startswith('TimelineZoom'):
                 repl = 'TimelineZoom: 2.6'
             elif line.startswith('GridSize'):
