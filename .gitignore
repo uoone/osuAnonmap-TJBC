@@ -5,3 +5,4 @@
 *.xml
 *.iml
 __pycache__/
+/output/*.osz
