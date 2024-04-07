@@ -165,10 +165,12 @@ for folder in osz_folders:
                 repl = 'BeatmapSetID:-1'
             elif line.startswith('Bookmarks'):
                 repl = 'Bookmarks:'
-            elif len(line.split(',')) == 6 and config['taiko'] ==True:
-                repl = '256,192,'+','.join(line.split(',')[2:])
-            elif len(line.split(',')) == 7 and config['taiko'] ==True:
-                repl = '256,192,' + ','.join(line.split(',')[2:])
+            elif len(line.split(',')) in [6, 7] and config['taiko'] == True:
+                hit_objects = line.split(',')
+                hit_sound = int(hit_objects[4])
+                if hit_sound | 2 == hit_sound:
+                    hit_sound = (hit_sound ^ 2) | 8
+                repl = '256,192,' + ','.join(hit_objects[2:4]) + ',' + str(hit_sound) + ',' + ','.join(hit_objects[5:])
             if repl:
                 to_write.append(repl+'\n')
             else:
