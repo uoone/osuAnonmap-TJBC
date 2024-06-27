@@ -115,8 +115,6 @@ for file in osu_list:
     f.writelines(to_write)
     f.close()
 
-    os.remove(os.path.join(extracted_oszs, file))
-
 to_osz_folder = os.path.join(extracted_oszs)
 move_file_list = glob.glob(to_osz_folder + "/*")
 for item in move_file_list:
