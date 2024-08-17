@@ -5,4 +5,8 @@
 *.xml
 *.iml
 __pycache__/
-/output/*.osz
+*.osz
+/extracted_oszs/*
+/unzipped_maps/*
+/output/*
+/to_osz/*
