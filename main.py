@@ -28,7 +28,7 @@ def anonymization(file_path):
     if os.path.exists(to_osz):
         shutil.rmtree(to_osz)
 
-    os.mkdir(outdir)
+    os.makedirs(outdir, exist_ok=True)
     os.mkdir(extracted_oszs)
     os.mkdir(to_osz)
 
