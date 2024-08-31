@@ -1,12 +1,12 @@
 *.zip
-/token.json
-/decode.json
 *.csv
 *.xml
 *.iml
 __pycache__/
 *.osz
 /extracted_oszs/*
-/unzipped_maps/*
 /output/*
 /to_osz/*
+/build/*
+/dist/*
+*.spec

@@ -12,3 +12,7 @@
 
 1. `python main.py <変換したいoszのパス>` を実行
 2. `output/` 以下に配置される osz ファイルを確認
+
+## デプロイ(pyinstaller)
+
+- `pyinstaller .\run_on_gui.py --name osuTaikoAnonmap.exe --onefile --noconsole --collect-data tkinterdnd2`
