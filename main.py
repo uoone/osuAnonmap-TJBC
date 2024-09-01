@@ -16,7 +16,7 @@ def zip_folder(folder_path, output_path):
 
     return
 
-def anonymization(file_path):
+def anonymization(file_path, rmv_bm=False):
     file_name = file_path.split('/')[-1]
     HOME = os.getcwd()
     extracted_oszs = os.path.join(HOME, 'extracted_oszs')
@@ -60,7 +60,10 @@ def anonymization(file_path):
         # for upwrite
         for line in lines:
             repl = False
-            if line.startswith('DistanceSpacing: '):
+            if line.startswith('Bookmarks: '):
+                if rmv_bm:
+                    repl = 'Bookmarks: '
+            elif line.startswith('DistanceSpacing: '):
                 repl = 'DistanceSpacing: 1.4'
             elif line.startswith('BeatDivisor: '):
                 repl = 'BeatDivisor: 4'

@@ -11,21 +11,25 @@ def filedialog_clicked():
     fTyp = [('', '*')]
     iFile = os.path.abspath(os.path.dirname(__file__))
     iFilePath = filedialog.askopenfilename(filetype = fTyp, initialdir = iFile)
-    entry.set(iFilePath)
+    browse.set(iFilePath)
 
 def conduct_main():
-    dirPath = entry.get()
-    if dirPath:
-        if dirPath.startswith('{'):
-            dirPath = dirPath[1:-1]
-        outdir = anonymization(dirPath)
-        messagebox.showinfo('success', '処理が完了しました。')
-        os.startfile(outdir)
+    dir_path = browse.get()
+    rmv_bm = remove_all_bookmarks.get()
+    if dir_path:
+        if dir_path.startswith('{'):
+            dir_path = dir_path[1:-1]
+        try:
+            outdir = anonymization(dir_path, rmv_bm)
+            messagebox.showinfo('success', '処理が完了しました。')
+            os.startfile(outdir)
+        except Exception as e:
+            messagebox.showerror('error', f'エラーが発生しました。\n{e.__class__.__name__}: {e}')
     else:
         messagebox.showerror('error', 'パスの指定がありません。')
 
 def drop(event):
-    entry.set(event.data)
+    browse.set(event.data)
 
 if __name__ == '__main__':
     root = Tk()
@@ -39,21 +43,25 @@ if __name__ == '__main__':
     frame1 = ttk.Frame(root, padding=10)
     frame1.grid(row=0, column=1, sticky=E+W)
     # Browse
-    IFileLabel = ttk.Label(frame1, text='osz file >>', padding=(5, 2))
-    IFileLabel.pack(side=LEFT)
+    label1 = ttk.Label(frame1, text='osz file >>', padding=(5, 2))
+    label1.pack(side=LEFT)
     # Browse Entry
-    entry = StringVar()
-    IFileEntry = ttk.Entry(frame1, textvariable=entry, width=30)
-    IFileEntry.pack(side=LEFT)
+    browse = StringVar()
+    entry1 = ttk.Entry(frame1, textvariable=browse, width=30)
+    entry1.pack(side=LEFT)
     # Browse Button
-    IFileButton = ttk.Button(frame1, text='Browse...', command=filedialog_clicked)
-    IFileButton.pack(side=LEFT)
+    button1 = ttk.Button(frame1, text='Browse...', command=filedialog_clicked)
+    button1.pack(side=LEFT)
 
     # Frame2
     frame2 = ttk.Frame(root, padding=10)
     frame2.grid(row=1, column=1, sticky=E+W)
     # Run Button
-    button1 = ttk.Button(frame2, text='Run', width=20, command=conduct_main)
-    button1.pack(fill = 'x', padx=20, side='right')
+    button2_1 = ttk.Button(frame2, text='Run', width=20, command=conduct_main)
+    button2_1.pack(fill = 'x', padx=20, side='right')
+    # Check Box
+    remove_all_bookmarks = BooleanVar()
+    button2_2 = ttk.Checkbutton(frame2, text='Remove all bookmarks', variable=remove_all_bookmarks)
+    button2_2.pack(fill = 'x', padx=20, side='right')
 
     root.mainloop()
